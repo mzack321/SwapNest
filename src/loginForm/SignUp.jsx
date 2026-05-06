@@ -1,56 +1,60 @@
-import { useState } from "react"
 
 
-const SignUp = ({handleLogin})=>{
-    const [userName, setUserName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+import { useState } from "react";
 
-   const  submitHandler = (e)=>{
-        e.preventDefault();
-        handleLogin(userName, email, password);
-        setUserName('')
-        setEmail('')
-        setPassword('')
-        
-    }
-    return(
-        <form
-        onSubmit={(e)=>{
-            submitHandler(e)
-        }}
-        className="max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg flex flex-col gap-4">
-             <h1 className="text-2xl font-bold text-center text-gray-700">SignUp form</h1>
+const SignUp = ({ handleLogin }) => {
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-             <input 
-             value={userName}
-             onChange={(e)=>{setUserName(e.target.value)}}
-               type="text"  
-               placeholder="Enter Your User Name"
-               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-             />
+  const submitHandler = (e) => {
+    e.preventDefault();
+    handleLogin(userName, email, password);
+    setUserName('');
+    setEmail('');
+    setPassword('');
+  };
 
-             <input 
-             value={email}
-             onChange={(e)=>{setEmail(e.target.value)}}
-               type="email" 
-               placeholder="Emter Your Email Adress"
-               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-             />
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <form
+        onSubmit={(e) => submitHandler(e)}
+        className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl p-6 sm:p-8 md:p-10 bg-white shadow-lg rounded-xl flex flex-col gap-4"
+      >
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-gray-700">
+          SignUp Form
+        </h1>
 
-             <input 
-             value={password}
-             onChange={(e)=>{setPassword(e.target.value)}}
-               type="password" 
-               placeholder="Enter Youe Password"
-               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-             />
+        <input
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          type="text"
+          placeholder="Enter Your User Name"
+          className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
 
-             <button className="bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200">
-               Please signUp
-             </button>
-        </form>
-    )
-}
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          placeholder="Enter Your Email Address"
+          className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+
+        <input
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          placeholder="Enter Your Password"
+          className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+
+        <button className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition duration-200 font-semibold">
+          Please SignUp
+        </button>
+      </form>
+    </div>
+  );
+};
+
 export default SignUp;
-
