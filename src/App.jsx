@@ -1,9 +1,10 @@
-import SignUp from "./loginForm/signUp";
+
 import Login from "./loginForm/Login";
+import Signup from "./loginForm/signUp";
 const App = ()=>{
   return(
 <div>
-  <SignUp></SignUp>
+  <Signup></Signup>
   <Login></Login>
     </div>
   )
