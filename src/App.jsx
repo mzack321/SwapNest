@@ -1,11 +1,9 @@
 
-import Login from "./loginForm/Login";
-import Signup from "./loginForm/signUp";
+// import Login from "./loginForm/Login";
 const App = ()=>{
   return(
 <div>
-  <Signup></Signup>
-  <Login></Login>
+  {/* <Login></Login> */}
     </div>
   )
 }
