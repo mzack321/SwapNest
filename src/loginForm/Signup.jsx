@@ -1,13 +1,26 @@
 
 import { useState } from "react";
+import axios from "axios"
 
-const Signup = () => {
+const Signup = ({setIsSignup}) => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const submitHandler = (e) => {
-    e.peventDefault();
+  const submitHandler = async(e) => {
+    e.preventDefault();
+    try{
+const res = await axios.post("http://localhost:5000/api/signup",{
+  userName,
+  email,
+  password,
+});
+console.log(res.data);
+alert(res.data.message);
+setIsSignup(true);
+} catch(error){
+  console.log(error);
+}
     setUserName('');
     setEmail('');
     setPassword('');
@@ -34,7 +47,7 @@ const Signup = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="text"
-          placeholder="Enter User Name"
+          placeholder="Enter Your Email"
           className="border border-gray-300 p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
 

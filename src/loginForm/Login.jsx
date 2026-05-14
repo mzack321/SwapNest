@@ -1,13 +1,28 @@
 
 import { useState } from "react";
+import axios from "axios";
 
-const Login = () => {
-  const [userName, setUserName] = useState('');
+const Login = ({setIsLoggedIn}) => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const submitHandler = (e) => {
-    e.peventDefault();
-    setUserName('');
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try{
+    const res  = await axios.post(
+      "http://localhost:5000/api/login",{
+        email,
+        password,
+      }
+    );
+  
+    console.log(res.data);
+    alert(res.data.message);
+     setIsLoggedIn(true);
+    } catch(error){
+console.log(error)
+    }
+    setEmail('');
     setPassword('');
   };
 
@@ -22,8 +37,8 @@ const Login = () => {
         </h2>
 
         <input
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           type="text"
           placeholder="Enter User Name"
           className="border border-gray-300 p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
