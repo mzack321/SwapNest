@@ -22,10 +22,10 @@ app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes
-app.use("/api", signupRoute);
-app.use("/api", loginRoute);
-app.use("/api", productRoute);
-app.use("/api", requestRoute);
+app.use("/api/signup", signupRoute);
+app.use("/api/login", loginRoute);
+app.use("/api/product", productRoute);
+app.use("/api/request", requestRoute);
 
 // Health Check Route
 app.get("/", (req, res) => {
