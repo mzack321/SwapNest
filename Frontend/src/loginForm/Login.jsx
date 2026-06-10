@@ -11,44 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const submitHandler = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const res = await axios.post(
-  //       "http://localhost:5000/api/login",
-  //       {
-  //         email,
-  //         password,
-  //       }
-  //     );
-
-  //     console.log(res.data);
-
-  //     if (res.status === 200) {
-  //       alert(res.data.message);
-
-  //       // ✅ 1. Save in context + localStorage
-  //       login(res.data.user || res.data);
-
-  //       // (optional safety)
-  //       localStorage.setItem(
-  //         "user",
-  //         JSON.stringify(res.data.user || res.data)
-  //       );
-
-  //       // ✅ 2. GO TO WELCOME PAGE (NOT dashboard)
-  //       navigate("/welcome");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-
-  //     alert(
-  //       error.response?.data?.message ||
-  //       "Wrong Email or Password"
-  //     );
-  //   }
-  // };
+  
 const submitHandler = async (e) => {
 
   e.preventDefault();

@@ -5,7 +5,7 @@ const upload = require("../middleware/upload");
 const auth = require("../middleware/auth");
 
 // CREATE PRODUCT
-router.post("/create", auth, upload.single("image"), async (req, res) => {
+const createProductHandler = async (req, res) => {
   try {
     const { productName, about, contact, address, userId, userName } = req.body;
     if (!req.file) {
@@ -26,12 +26,35 @@ router.post("/create", auth, upload.single("image"), async (req, res) => {
     console.log(err);
     res.status(500).json({ success: false, message: err.message });
   }
-});
+};
+
+router.post("/create", auth, upload.single("image"), createProductHandler);
+router.post("/addproduct", auth, upload.single("image"), createProductHandler);
+router.post("/", auth, upload.single("image"), createProductHandler);
 
 // GET ALL PRODUCTS
 router.get("/all", async (req, res) => {
   try {
     const products = await Product.find().sort({ createdAt: -1 });
+    res.json(products);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const products = await Product.find().sort({ createdAt: -1 });
+    res.json(products);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// GET PRODUCTS BY USER
+router.get("/user/:userId", async (req, res) => {
+  try {
+    const products = await Product.find({ userId: req.params.userId }).sort({ createdAt: -1 });
     res.json(products);
   } catch (err) {
     res.status(500).json(err);
