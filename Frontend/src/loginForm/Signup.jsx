@@ -3,6 +3,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../api";
 
 const Signup = () => {
 
@@ -28,8 +29,10 @@ const Signup = () => {
 
     try {
 
-      const res = await axios.post(
-        "http://localhost:5000/api/signup",
+      const res = await api.post(
+
+        "/signup",
+
         {
           userName,
           email,
